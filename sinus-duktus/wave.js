@@ -6,6 +6,11 @@ import {RenderEntity} from "./render-entity";
 export class Wave {
 
   constructor(start, end, d1, d2, o, a) {
+    this.d1 = d1;
+    this.d2 = d2;
+    this.o = o;
+    this.a = a;
+
     this.data = [];
     let t = start;
     while(t < end) {
