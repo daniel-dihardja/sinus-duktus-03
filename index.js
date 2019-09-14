@@ -4,7 +4,7 @@
 
 import {Wave} from "./sinus-duktus";
 import {CanvasRenderer} from "./sinus-duktus/renderers";
-import {MSize} from "./sinus-duktus/modulators";
+import {MSize, RandomSize} from "./sinus-duktus/modulators";
 import * as dat from 'dat.gui';
 
 const w = {
@@ -25,8 +25,9 @@ wd.add(w, 'a', 0.1, 100).onChange(e => render());
 const render = () => {
   const cd = new CanvasRenderer('canvas');
   const ms = new MSize();
+  const rs = new RandomSize();
 
   new Wave(w)
-  .mod(data => ms.mod(data))
+  .mod(data => rs.mod(data))
   .render(data => cd.render(data));
 };
