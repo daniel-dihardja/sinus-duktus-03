@@ -9,6 +9,6 @@ export class MSize {
   }
 
   mod(data) {
-    return data.map(e => new RenderEntity(e.x, e.y, this.s * Math.random() * 10));
+    return data.map(e => new RenderEntity(e.x, e.y, this.s));
   }
 }

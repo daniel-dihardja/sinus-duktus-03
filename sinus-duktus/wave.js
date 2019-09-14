@@ -5,17 +5,18 @@ import {RenderEntity} from "./render-entity";
 
 export class Wave {
 
-  constructor(start, end, d1, d2, o, a) {
-    this.d1 = d1;
-    this.d2 = d2;
-    this.o = o;
-    this.a = a;
+  constructor(params) {
+    this.width = params.width || 1000;
+    this.d1 = params.d1 || 0.1;
+    this.d2 = params.d2 || 0.1;
+    this.o = params.o || 0.5;
+    this.a = params.a || 70;
 
     this.data = [];
-    let t = start;
-    while(t < end) {
-      this.data.push(new RenderEntity(t, Math.sin(t/d1) * Math.sin(t/d2) * a));
-      t += o;
+    let t = 0;
+    while(t < this.width) {
+      this.data.push(new RenderEntity(t, Math.sin(t / this.d1) * Math.sin(t / this.d2) * this.a));
+      t += this.o;
     }
   }
 
