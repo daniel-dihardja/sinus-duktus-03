@@ -14,8 +14,8 @@ export class Wave {
     }
   }
 
-  mod(rect, cb) {
-    this.data = cb(this.data);
+  mod(cb, rect) {
+    this.data = cb([...this.data]);
     return this;
   }
 
