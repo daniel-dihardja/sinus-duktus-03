@@ -1,7 +1,7 @@
 /**
  * Created by danieldihardja on 04.09.19.
  */
-import {RenderEntity} from "./render-entity";
+import {RenderEntity} from "../render-entity";
 
 export class Wave {
 

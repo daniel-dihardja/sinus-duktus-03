@@ -3,9 +3,9 @@
  */
 
 import './styles/style.scss';
-import {Wave} from "./sinus-duktus";
-import {CanvasRenderer} from "./sinus-duktus/renderers";
-import {RandomSize} from "./sinus-duktus/modulators";
+import { Wave } from "./sinus-duktus/generators/wave";
+import { RandomSize } from "./sinus-duktus/modulators";
+import { CanvasRenderer } from "./sinus-duktus/renderers";
 import * as dat from 'dat.gui';
 
 const w = {
@@ -23,13 +23,23 @@ wd.add(w, 'd2', 0.1, 1).onChange(e => render());
 wd.add(w, 'o', 0.1, 1).onChange(e => render());
 wd.add(w, 'a', 0.1, 100).onChange(e => render());
 
+/*
+new UI()
+.add('', rs.ui().onChange(e => render()));
+*/
+
+const rs = new RandomSize();
+rs.ui(document.getElementById('ui'));
+
 const render = () => {
   const cd = new CanvasRenderer('canvas');
-  const rs = new RandomSize();
+
 
   new Wave(w)
     .mod(data => rs.mod(data))
     .render(data => cd.render(data));
+
+
 };
 
 // initial render

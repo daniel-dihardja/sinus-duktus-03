@@ -4,17 +4,9 @@
 
 export class RenderEntity {
   constructor(x, y, size) {
-    this.x = x;
-    this.y = y;
+    this.x = x || 0;
+    this.y = y || 0;
     this.size = size || 4;
   }
 }
 
-export class Rect {
-  constructor() {
-    this.x=0;
-    this.y=0;
-    this.width=100;
-    this.height=40;
-  }
-}
