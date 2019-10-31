@@ -8,6 +8,7 @@ import { RandomSize } from "./sinus-duktus/modulators";
 import { CanvasRenderer } from "./sinus-duktus/renderers";
 import { UI } from './sinus-duktus/ui.js';
 import * as dat from 'dat.gui';
+import {Setup} from "./sinus-duktus/setup";
 
 const w = {
   d1: .1,
@@ -24,11 +25,14 @@ wd.add(w, 'd2', 0.1, 1).onChange(e => render());
 wd.add(w, 'o', 0.1, 1).onChange(e => render());
 wd.add(w, 'a', 0.1, 100).onChange(e => render());
 
+//const wav = new Wave();
+
 const rs = new RandomSize();
 rs.onChange = render;
 
 new UI('ui')
-  .add(rs.ui());
+  .add('wave')
+  .add('random size', rs.ui());
 
 function render() {
   const cd = new CanvasRenderer('canvas');
@@ -36,5 +40,6 @@ function render() {
     .mod(data => rs.mod(data))
     .render(data => cd.render(data));
 }
+
 // initial render
 render();

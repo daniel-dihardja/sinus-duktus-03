@@ -22,3 +22,28 @@ canvas {
   background-color: #DDDDDD;
   margin-top: 20px;
 }
+
+.ui-con {
+  display: flex;
+}
+
+.menu {
+  border: 1px solid;
+  width: 100px;
+  height: 100px;
+}
+
+.panel {
+  border: 1px solid;
+  width: 300px;
+  height: 100px;
+}
+
+.item {
+  height: 30px;
+  background-color: #DDDDDD;
+  cursor: pointer;
+  display: block;
+  margin-bottom: 2px;
+  padding: 2px;
+}

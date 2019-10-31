@@ -12,12 +12,22 @@ export class Wave {
     this.o = params.o || 0.5;
     this.a = params.a || 70;
 
+    this.run();
+  }
+
+  run() {
     this.data = [];
     let t = 0;
     while(t < this.width) {
       this.data.push(new RenderEntity(t, Math.sin(t / this.d1) * Math.sin(t / this.d2) * this.a));
       t += this.o;
     }
+    return this.data;
+  }
+
+  ui() {
+    const e = document.createElement('div');
+    return e;
   }
 
   mod(cb, rect) {
