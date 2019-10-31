@@ -7,23 +7,28 @@ export class RandomSize {
   constructor() {
     this.min = 1;
     this.max = 5;
+    this.value = this.max;
+    this.onChange;
   }
 
   mod(data) {
-    return data.map(e => new RenderEntity(e.x, e.y, Math.random() * this.max));
+    return data.map(e => new RenderEntity(e.x, e.y, Math.random() * this.value));
   }
 
-  onInput(evt) {
-    return '';
-  }
+  ui() {
+    const con = document.createElement('div');
+    const max = document.createElement('input');
 
-  ui(con) {
-    const ui = `
-      <div>
-        <input type="range" min=\`${this.min}\` max=\`${this.max}\` onchange""><br/>
-        <input type="range" min=\`${this.min}\` max=\`${this.max}\` onchange""><br/>
-      </div>
-    `;
-    con.innerHTML = ui;
+    max.setAttribute('type', 'range');
+    max.setAttribute('min', this. min);
+    max.setAttribute('max', this. max);
+
+    max.addEventListener('input', e => {
+      this.value = e.target.value;
+      if (this.onChange) this.onChange();
+    });
+
+    con.appendChild(max);
+    return con;
   }
 }
