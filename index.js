@@ -25,20 +25,33 @@ wd.add(w, 'd2', 0.1, 1).onChange(e => render());
 wd.add(w, 'o', 0.1, 1).onChange(e => render());
 wd.add(w, 'a', 0.1, 100).onChange(e => render());
 
-//const wav = new Wave();
+const wav = new Wave();
+wav.onChange = render;
 
 const rs = new RandomSize();
 rs.onChange = render;
 
+
+
 new UI('ui')
   .add('wave')
   .add('random size', rs.ui());
+
+
+
 
 function render() {
   const cd = new CanvasRenderer('canvas');
   new Wave(w)
     .mod(data => rs.mod(data))
     .render(data => cd.render(data));
+
+
+  const d = new Setup()
+    .setGenerator(wav)
+    .addModulator(rs)
+    .run();
+
 }
 
 // initial render

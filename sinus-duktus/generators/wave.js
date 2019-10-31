@@ -5,13 +5,14 @@ import {RenderEntity} from "../render-entity";
 
 export class Wave {
 
-  constructor(params) {
-    this.width = params.width || 1000;
-    this.d1 = params.d1 || 0.1;
-    this.d2 = params.d2 || 0.1;
-    this.o = params.o || 0.5;
-    this.a = params.a || 70;
+  constructor() {
+    this.width = 1000;
+    this.d1 = 0.1;
+    this.d2 = 0.1;
+    this.o = 0.5;
+    this.a = 70;
 
+    this.onChange;
     this.run();
   }
 
@@ -27,6 +28,25 @@ export class Wave {
 
   ui() {
     const e = document.createElement('div');
+    const sliderD1 = this.slider('d1', 0.1, 1, e => console.log(e));
+    const sliderD2 = this.slider('d2', 0.1, 100, e => console.log(e));
+    const sliderO = this.slider('o', 0.1, 100, e => console.log(e));
+    const a = this.slider('a', 1, 100, e => console.log(e));
+
+    e.appendChild(sliderD1);
+    e.appendChild(sliderD2);
+    e.appendChild(sliderO);
+    e.appendChild(a);
+
+    return e;
+  }
+
+  slider(name, min, max, cb) {
+    const e = document.createElement('input');
+    e.setAttribute('type', 'range');
+    e.setAttribute('min', min);
+    e.setAttribute('max', max);
+    e.addEventListener('input', e => cb(e));
     return e;
   }
 

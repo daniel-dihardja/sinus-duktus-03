@@ -4,12 +4,14 @@ export class Setup {
     this.modulators = [];
   }
 
-  addGenerator(g) {
+  setGenerator(g) {
     this.generator = g;
+    return this;
   }
 
   addModulator(m) {
     this.modulators.push(m);
+    return this;
   }
 
   run() {
