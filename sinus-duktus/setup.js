@@ -16,5 +16,6 @@ export class Setup {
 
   run() {
     const d = this.generator.run();
+    return this.modulators.reduce((acc, m) => m.mod(acc), d);
   }
 }

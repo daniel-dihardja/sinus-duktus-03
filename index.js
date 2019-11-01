@@ -16,34 +16,24 @@ const w = {
   a: 70
 };
 
-
-
 const wav = new Wave();
 wav.onChange = render;
 
 const rs = new RandomSize();
 rs.onChange = render;
 
-
-
 new UI('ui')
   .add('wave')
   .add('random size', rs.ui());
 
-
-
 function render() {
-  const cd = new CanvasRenderer('canvas');
-  new Wave(w)
-    .mod(data => rs.mod(data))
-    .render(data => cd.render(data));
-
-
   const d = new Setup()
     .setGenerator(wav)
     .addModulator(rs)
     .run();
 
+  const cd = new CanvasRenderer('canvas');
+  cd.render(d);
 }
 
 // initial render
