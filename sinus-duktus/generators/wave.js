@@ -27,6 +27,7 @@ export class Wave {
 
   ui() {
     const f = document.createElement('fieldset');
+    f.setAttribute('class', 'panel-item');
     const l = document.createElement('legend');
     l.innerHTML = 'Generator - Wave';
     f.appendChild(l);

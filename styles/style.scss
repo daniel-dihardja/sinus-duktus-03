@@ -39,6 +39,11 @@ canvas {
   min-height: 100px;
 }
 
+.panel-item {
+  display: flex;
+  flex-direction: column;
+}
+
 .item {
   height: 30px;
   background-color: #DDDDDD;
