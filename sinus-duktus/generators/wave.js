@@ -9,14 +9,14 @@ export class Wave {
     this.width = 1000;
     this.d1 = 0.1;
     this.d2 = 0.1;
-    this.o = 0.5;
+    this.o = .5;
     this.a = 70;
 
     this.onChange;
-    this.run();
   }
 
   run() {
+    console.log(this.o);
     this.data = [];
     let t = 0;
     while(t < this.width) {
@@ -27,35 +27,37 @@ export class Wave {
   }
 
   ui() {
-    const e = document.createElement('div');
-    const sliderD1 = this.slider('d1', 0.1, 1, e => console.log(e));
-    const sliderD2 = this.slider('d2', 0.1, 100, e => console.log(e));
-    const sliderO = this.slider('o', 0.1, 100, e => console.log(e));
-    const a = this.slider('a', 1, 100, e => console.log(e));
+    const f = document.createElement('fieldset');
+    const l = document.createElement('legend');
+    l.innerHTML = 'Generator - Wave';
+    f.appendChild(l);
 
-    e.appendChild(sliderD1);
-    e.appendChild(sliderD2);
-    e.appendChild(sliderO);
-    e.appendChild(a);
+    const sliderD1 = this.slider('d1', 0.1, 1, .1, v => this.d1 = v);
+    const sliderD2 = this.slider('d2', 0.1, 100, 1, v => this.d2 = v);
+    const sliderO = this.slider('o', 0.1, 1, .1, v => this.o = v);
+    const sliderA = this.slider('a', 1, 100, 1, v => this.a = v);
 
-    return e;
+    f.appendChild(sliderD1);
+    f.appendChild(sliderD2);
+    f.appendChild(sliderO);
+    f.appendChild(sliderA);
+
+    return f;
   }
 
-  slider(name, min, max, cb) {
+  slider(name, min, max, step, cb) {
     const e = document.createElement('input');
     e.setAttribute('type', 'range');
     e.setAttribute('min', min);
     e.setAttribute('max', max);
-    e.addEventListener('input', e => cb(e));
+    e.setAttribute('step', step || 1);
+    e.addEventListener('input', e => {
+      cb(parseFloat(e.target.value));
+      if(this.onChange) this.onChange();
+      console.log('asd');
+    });
     return e;
   }
 
-  mod(cb, rect) {
-    this.data = cb([...this.data]);
-    return this;
-  }
 
-  render(cb) {
-    cb(this.data);
-  }
 }

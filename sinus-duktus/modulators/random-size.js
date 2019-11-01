@@ -16,7 +16,11 @@ export class RandomSize {
   }
 
   ui() {
-    const con = document.createElement('div');
+    const con = document.createElement('fieldset');
+    const l = document.createElement('legend');
+    l.innerHTML = 'Modulator - Random Size';
+    con.appendChild(l);
+
     const max = document.createElement('input');
 
     max.setAttribute('type', 'range');

@@ -19,7 +19,7 @@ rs.onChange = render;
 
 // ui for controling params
 new UI('ui')
-  .add('wave')
+  .add('wave', wav.ui())
   .add('random size', rs.ui());
 
 

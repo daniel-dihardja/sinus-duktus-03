@@ -30,13 +30,13 @@ canvas {
 .menu {
   border: 1px solid;
   width: 100px;
-  height: 100px;
+  min-height: 100px;
 }
 
 .panel {
   border: 1px solid;
   width: 300px;
-  height: 100px;
+  min-height: 100px;
 }
 
 .item {
