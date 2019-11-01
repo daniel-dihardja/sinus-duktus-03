@@ -1,14 +1,20 @@
 /**
  * Created by danieldihardja on 14.09.19.
  */
-import {RenderEntity} from "../render-entity";
+import {RenderItem} from "../render-item";
 
 export class MSize {
   constructor() {
     this.s = 2;
+    this.min = 1;
   }
 
   mod(data) {
-    return data.map(e => new RenderEntity(e.x, e.y, this.s));
+    let s = this.min;
+    let t = 0;
+    return data.map(e => {
+
+      return new RenderItem(e.x, e.y, s);
+    });
   }
 }

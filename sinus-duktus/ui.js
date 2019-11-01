@@ -23,11 +23,6 @@ export class UI {
 
   add(name, el) {
     if(el) this.panel.appendChild(el);
-    const e = document.createElement('a');
-    e.setAttribute('class', 'item');
-    e.addEventListener('click', e => console.log(e));
-    e.innerHTML = name;
-    this.menu.appendChild(e);
     return this;
   }
 }

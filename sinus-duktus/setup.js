@@ -14,7 +14,7 @@ export class Setup {
     return this;
   }
 
-  run() {
+  run(filterRect) {
     const d = this.generator.run();
     return this.modulators.reduce((acc, m) => {
       if(m.active) return m.mod(acc);

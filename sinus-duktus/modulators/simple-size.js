@@ -3,24 +3,24 @@
  */
 import {RenderItem} from "../render-item";
 
-export class RandomSize {
+export class SimpleSize {
   constructor() {
     this.min = 1;
-    this.max = 5;
-    this.value = this.max;
+    this.max = 10;
+    this.value = 4;
     this.active = true;
     this.onChange;
   }
 
   mod(data) {
-    return data.map(e => new RenderItem(e.x, e.y, Math.random() * this.value));
+    return data.map(e => new RenderItem(e.x, e.y, this.value));
   }
 
   ui() {
     const con = document.createElement('fieldset');
     con.setAttribute('class', 'panel-item');
     const l = document.createElement('legend');
-    l.innerHTML = 'Random Size';
+    l.innerHTML = 'Simple Size';
     con.appendChild(l);
 
     const a = document.createElement('input');

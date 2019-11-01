@@ -1,7 +1,7 @@
 /**
  * Created by danieldihardja on 04.09.19.
  */
-import {RenderEntity} from "../render-entity";
+import {RenderItem} from "../render-item";
 
 export class Wave {
 
@@ -19,7 +19,7 @@ export class Wave {
     this.data = [];
     let t = 0;
     while(t < this.width) {
-      this.data.push(new RenderEntity(t, Math.sin(t / this.d1) * Math.sin(t / this.d2) * this.a));
+      this.data.push(new RenderItem(t, Math.sin(t / this.d1) * Math.sin(t / this.d2) * this.a));
       t += this.o;
     }
     return this.data;
@@ -29,7 +29,7 @@ export class Wave {
     const f = document.createElement('fieldset');
     f.setAttribute('class', 'panel-item');
     const l = document.createElement('legend');
-    l.innerHTML = 'Generator - Wave';
+    l.innerHTML = 'Wave';
     f.appendChild(l);
 
     const sliderD1 = this.slider('d1', 0.1, 1, .1, v => this.d1 = v);
