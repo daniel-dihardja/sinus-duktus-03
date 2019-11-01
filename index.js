@@ -9,22 +9,19 @@ import { CanvasRenderer } from "./sinus-duktus/renderers";
 import { UI } from './sinus-duktus/ui.js';
 import {Setup} from "./sinus-duktus/setup";
 
-const w = {
-  d1: .1,
-  d2: 10,
-  o: .5,
-  a: 70
-};
-
+// generator
 const wav = new Wave();
 wav.onChange = render;
 
+// modulator
 const rs = new RandomSize();
 rs.onChange = render;
 
+// ui for controling params
 new UI('ui')
   .add('wave')
   .add('random size', rs.ui());
+
 
 function render() {
   const d = new Setup()
