@@ -6,11 +6,8 @@ import './styles/style.scss';
 import {Setup} from "./sinus-duktus/setup";
 import { UI } from './sinus-duktus/ui.js';
 import { Wave } from "./sinus-duktus/generators/wave";
-import { RandomSize } from "./sinus-duktus/modulators";
-import { SimpleSize } from './sinus-duktus/modulators/simple-size';
-
+import { RandomSize, SimpleSize } from "./sinus-duktus/modulators";
 import { CanvasRenderer } from "./sinus-duktus/renderers";
-
 
 
 // generator
@@ -18,7 +15,6 @@ const wav = new Wave();
 wav.onChange = render;
 
 // modulator
-
 const sis = new SimpleSize();
 sis.onChange = render;
 

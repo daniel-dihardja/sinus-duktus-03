@@ -2,6 +2,7 @@
  * Created by danieldihardja on 14.09.19.
  */
 import {RenderItem} from "../render-item";
+import {panel, ckbox, slider} from "../ui-util";
 
 export class RandomSize {
   constructor() {
@@ -17,29 +18,16 @@ export class RandomSize {
   }
 
   ui() {
-    const con = document.createElement('fieldset');
-    con.setAttribute('class', 'panel-item');
-    const l = document.createElement('legend');
-    l.innerHTML = 'Random Size';
-    con.appendChild(l);
-
-    const a = document.createElement('input');
-    a.setAttribute('type', 'checkbox');
-    a.setAttribute('checked', this.active);
-    a.addEventListener('change', e => {
-      this.active = e.target.checked;
-      if (this.onChange) this.onChange();
+    const con = panel('Random Size');
+    const a = ckbox(this.active, v => {
+      this.active = v;
+      if(this.onChange) this.onChange();
     });
     con.appendChild(a);
 
-    const max = document.createElement('input');
-    max.setAttribute('type', 'range');
-    max.setAttribute('min', this. min);
-    max.setAttribute('max', this. max);
-
-    max.addEventListener('input', e => {
-      this.value = e.target.value;
-      if (this.onChange) this.onChange();
+    const max = slider(this.value, this.min, this.max, 1, v => {
+      this.value = v;
+      this.onChange();
     });
 
     con.appendChild(max);
