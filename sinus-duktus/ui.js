@@ -21,7 +21,7 @@ export class UI {
     return e;
   }
 
-  add(name, el) {
+  add(el) {
     if(el) this.panel.appendChild(el);
     return this;
   }

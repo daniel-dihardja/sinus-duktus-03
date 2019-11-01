@@ -23,9 +23,9 @@ rs.onChange = render;
 
 // ui for controling params
 new UI('ui')
-  .add('wave', wav.ui())
-  .add('wave', sis.ui())
-  .add('random size', rs.ui());
+  .add(wav.ui())
+  .add(sis.ui())
+  .add(rs.ui());
 
 function render() {
   const d = new Setup()
