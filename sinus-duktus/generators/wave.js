@@ -16,7 +16,6 @@ export class Wave {
   }
 
   run() {
-    console.log(this.o);
     this.data = [];
     let t = 0;
     while(t < this.width) {
@@ -54,7 +53,6 @@ export class Wave {
     e.addEventListener('input', e => {
       cb(parseFloat(e.target.value));
       if(this.onChange) this.onChange();
-      console.log('asd');
     });
     return e;
   }
