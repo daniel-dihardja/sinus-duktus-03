@@ -14,10 +14,7 @@ export class MSize {
   }
 
   mod(data, config) {
-    let s = this.min;
-    let t = 0;
     const h = config.height / 2;
-
     return data.map(e => {
       const ey = e.y < 0 ? e.y * -1 : e.y;
       const d = ey / h;
