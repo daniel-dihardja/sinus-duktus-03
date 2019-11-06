@@ -7,7 +7,7 @@ import {Setup} from "./sinus-duktus/setup";
 import { UI } from './sinus-duktus/ui.js';
 import { Wave } from "./sinus-duktus/generators/wave";
 import { RandomSize, SimpleSize, MSize } from "./sinus-duktus/modulators";
-import { CanvasRenderer } from "./sinus-duktus/renderers";
+import { CanvasRenderer, SVGRenderer } from "./sinus-duktus/renderers";
 
 
 // generator
@@ -28,7 +28,6 @@ ms.onChange = render;
 new UI('ui')
   .add(wav.ui())
   .add(ms.ui());
-
 
 function render() {
   const d = new Setup()

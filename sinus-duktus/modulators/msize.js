@@ -11,13 +11,15 @@ export class MSize {
     this.min = 1;
     this.max = 20;
     this.value = 5;
+    this.reverse = true;
   }
 
   mod(data, config) {
     const h = config.height / 2;
     return data.map(e => {
       const ey = e.y < 0 ? e.y * -1 : e.y;
-      const d = ey / h;
+      let d =  ey / h;
+      if (this.reverse) d = 1 - d;
       const s = d * this.value;
       return new RenderItem(e.x, e.y, s);
     });
@@ -37,6 +39,13 @@ export class MSize {
     });
 
     con.appendChild(max);
+
+    const r = ckbox(this.reverse, v => {
+      this.reverse = v;
+      this.onChange();
+    });
+    con.appendChild(r);
+
     return con;
   }
 }
