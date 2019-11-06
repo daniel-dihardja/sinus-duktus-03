@@ -6,7 +6,7 @@ import './styles/style.scss';
 import {Setup} from "./sinus-duktus/setup";
 import { UI } from './sinus-duktus/ui.js';
 import { Wave } from "./sinus-duktus/generators/wave";
-import { RandomSize, SimpleSize } from "./sinus-duktus/modulators";
+import { RandomSize, SimpleSize, MSize } from "./sinus-duktus/modulators";
 import { CanvasRenderer } from "./sinus-duktus/renderers";
 
 
@@ -21,17 +21,19 @@ sis.onChange = render;
 const rs = new RandomSize();
 rs.onChange = render;
 
+const ms = new MSize();
+ms.onChange = render;
+
 // ui for controling params
 new UI('ui')
   .add(wav.ui())
-  .add(sis.ui())
-  .add(rs.ui());
+  .add(ms.ui());
+
 
 function render() {
   const d = new Setup()
     .setGenerator(wav)
-    .addModulator(sis)
-    .addModulator(rs)
+    .addModulator(ms)
     .run();
 
   const cd = new CanvasRenderer('canvas');

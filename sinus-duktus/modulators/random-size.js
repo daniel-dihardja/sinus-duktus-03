@@ -7,7 +7,7 @@ import {panel, ckbox, slider} from "../ui-util";
 export class RandomSize {
   constructor() {
     this.min = 1;
-    this.max = 5;
+    this.max = 10;
     this.value = this.max;
     this.active = true;
     this.onChange;
@@ -21,7 +21,7 @@ export class RandomSize {
     const con = panel('Random Size');
     const a = ckbox(this.active, v => {
       this.active = v;
-      if(this.onChange) this.onChange();
+      this.onChange();
     });
     con.appendChild(a);
 

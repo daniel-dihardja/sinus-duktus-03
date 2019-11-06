@@ -1,8 +1,9 @@
 /**
  * Created by danieldihardja on 14.09.19.
  */
-import {RenderItem} from "../render-item";
-import {panel, ckbox, slider} from "../ui-util";
+
+import { RenderItem } from "../render-item";
+import { panel, ckbox, slider } from "../ui-util";
 
 export class SimpleSize {
   constructor() {
@@ -21,7 +22,7 @@ export class SimpleSize {
     const con = panel('Simple Size');
     const a = ckbox(this.active, v => {
       this.active = v;
-      if(this.onChange) this.onChange();
+      this.onChange();
     });
     con.appendChild(a);
 

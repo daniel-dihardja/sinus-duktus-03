@@ -25,7 +25,7 @@ export function slider(value, min, max, step, cb) {
   s.setAttribute('step', step);
 
   s.addEventListener('input', e => {
-    cb(e.target.value);
+    cb(parseFloat(e.target.value));
   });
 
   return s;

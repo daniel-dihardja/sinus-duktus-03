@@ -2,6 +2,7 @@
  * Created by danieldihardja on 04.09.19.
  */
 import {RenderItem} from "../render-item";
+import {panel, slider} from "../ui-util";
 
 export class Wave {
 
@@ -26,16 +27,25 @@ export class Wave {
   }
 
   ui() {
-    const f = document.createElement('fieldset');
-    f.setAttribute('class', 'panel-item');
-    const l = document.createElement('legend');
-    l.innerHTML = 'Wave';
-    f.appendChild(l);
 
-    const sliderD1 = this.slider('d1', 0.1, 1, .1, v => this.d1 = v);
-    const sliderD2 = this.slider('d2', 0.1, 100, 1, v => this.d2 = v);
-    const sliderO = this.slider('o', 0.1, 1, .1, v => this.o = v);
-    const sliderA = this.slider('a', 1, 100, 1, v => this.a = v);
+    const f = panel('Wave');
+
+    const sliderD1 = slider(.5, 0.1, 1, .1, v => {
+      this.d1 = v;
+      this.onChange();
+    });
+    const sliderD2 = slider(1, 0.1, 100, 1, v => {
+      this.d2 = v;
+      this.onChange();
+    });
+    const sliderO = slider(.5, 0.1, 1, .1, v => {
+      this.o = v;
+      this.onChange();
+    });
+    const sliderA = slider(70, 1, 100, 1, v => {
+      this.a = v;
+      this.onChange();
+    });
 
     f.appendChild(sliderD1);
     f.appendChild(sliderD2);
@@ -44,19 +54,4 @@ export class Wave {
 
     return f;
   }
-
-  slider(name, min, max, step, cb) {
-    const e = document.createElement('input');
-    e.setAttribute('type', 'range');
-    e.setAttribute('min', min);
-    e.setAttribute('max', max);
-    e.setAttribute('step', step || 1);
-    e.addEventListener('input', e => {
-      cb(parseFloat(e.target.value));
-      if(this.onChange) this.onChange();
-    });
-    return e;
-  }
-
-
 }

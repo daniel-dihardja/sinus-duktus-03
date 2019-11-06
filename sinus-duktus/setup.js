@@ -1,3 +1,5 @@
+import {config} from '../config.js';
+
 export class Setup {
   constructor() {
     this.generator;
@@ -17,7 +19,7 @@ export class Setup {
   run(filterRect) {
     const d = this.generator.run();
     return this.modulators.reduce((acc, m) => {
-      if(m.active) return m.mod(acc);
+      if(m.active) return m.mod(acc, config);
       return acc;
     }, d);
   }
