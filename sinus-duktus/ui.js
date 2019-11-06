@@ -5,13 +5,10 @@ export class UI {
     //this.con.appendChild(this.ui());
     this.ui();
     this.panel;
-    this.menu;
   }
 
   ui() {
-    this.menu = this.comp('menu');
     this.panel = this.comp('panel');
-    this.con.appendChild(this.menu);
     this.con.appendChild(this.panel);
   }
 

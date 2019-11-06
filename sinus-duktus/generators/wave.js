@@ -12,7 +12,7 @@ export class Wave {
     this.d2 = 0.1;
     this.o = .5;
     this.a = 70;
-
+    this.offset = 0;
     this.onChange;
   }
 
@@ -20,7 +20,10 @@ export class Wave {
     this.data = [];
     let t = 0;
     while(t < this.width) {
-      this.data.push(new RenderItem(t, Math.sin(t / this.d1) * Math.sin(t / this.d2) * this.a));
+      const s1 = Math.sin((t / this.d1) + this.offset);
+      const s2 = Math.sin((t / this.d2) + this.offset);
+
+      this.data.push(new RenderItem(t, s1 * s2 * this.a));
       t += this.o;
     }
     return this.data;
@@ -47,10 +50,16 @@ export class Wave {
       this.onChange();
     });
 
+    const sliderOffset = slider(0, 1, 100, 1, v => {
+      this.offset = v;
+      this.onChange();
+    });
+
     f.appendChild(sliderD1);
     f.appendChild(sliderD2);
     f.appendChild(sliderO);
     f.appendChild(sliderA);
+    f.appendChild(sliderOffset);
 
     return f;
   }
