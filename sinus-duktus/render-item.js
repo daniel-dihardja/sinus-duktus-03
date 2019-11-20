@@ -10,3 +10,7 @@ export class RenderItem {
   }
 }
 
+export const sdata = {
+  config: {},
+  items: []
+};

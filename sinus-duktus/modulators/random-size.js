@@ -23,6 +23,7 @@ export class RandomSize {
       this.active = v;
       this.onChange();
     });
+
     con.appendChild(a);
 
     const max = slider(this.value, this.min, this.max, 1, v => {

@@ -17,15 +17,16 @@ const dot = (ctx, x, y, r, stroke = true) => {
 export class CanvasRenderer {
   constructor(canvasId) {
     this.canvas = document.getElementById(canvasId);
-    this.canvas.width = 1000;
-    this.canvas.height = 200;
     this.ctx = this.canvas.getContext('2d');
-    this.ctx.translate(0, 100);
   }
 
-  render(data) {
+  render(state) {
+    this.canvas.width = state.config.width;
+    this.canvas.height = state.config.height;
+    this.ctx.translate(0, 100);
+
     this.ctx.fillStyle = '#FFF';
-    data.forEach(e => {
+    state.items.forEach(e => {
       dot(this.ctx, e.x, e.y, e.size);
     });
   }

@@ -1,6 +1,7 @@
 import {config} from '../config.js';
 
 export class Setup {
+
   constructor() {
     this.generator;
     this.modulators = [];

@@ -30,3 +30,13 @@ export function slider(value, min, max, step, cb) {
 
   return s;
 }
+
+export function button(label, cb) {
+  const b = document.createElement('button');
+  b.setAttribute('type', 'button');
+  b.innerText = label;
+  b.addEventListener('click', () => {
+    cb();
+  });
+  return b;
+}

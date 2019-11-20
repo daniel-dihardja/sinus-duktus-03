@@ -8,8 +8,7 @@ export class UI {
   }
 
   ui() {
-    this.panel = this.comp('panel');
-    this.con.appendChild(this.panel);
+
   }
 
   comp(className) {
@@ -19,7 +18,7 @@ export class UI {
   }
 
   add(el) {
-    if(el) this.panel.appendChild(el);
+    if(el) this.con .appendChild(el);
     return this;
   }
 }

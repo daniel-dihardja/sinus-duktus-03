@@ -50,7 +50,7 @@ export class Wave {
       this.onChange();
     });
 
-    const sliderOffset = slider(0, 1, 100, 1, v => {
+    const sliderOffset = slider(0, 1, 100, .2, v => {
       this.offset = v;
       this.onChange();
     });
