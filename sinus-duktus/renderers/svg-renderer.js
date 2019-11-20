@@ -25,12 +25,31 @@ export class SVGRenderer {
 
   render(state) {
     console.log('render svg');
+
     // create svg doc;
-    const s = document.createElement('svg');
-    s.setAttribute('width', state.config.width);
-    s.setAttribute('height', state.config.height);
-    s.setAttribute('viewBox', `${0} ${state.config.height / 2} ${state.config.width} ${state.config.height}`);
-    console.log(s);
-    // state.items.forEach(e => console.log(e));
+    const s = this.svgDoc(state.config);
+    state.items.forEach(i => {
+      const  c = this.svgCircle(i);
+      s.appendChild(c);
+    });
+    // document.body.appendChild(s);
+  }
+
+  svgDoc(config) {
+    const s = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    s.setAttribute('width', config.width);
+    s.setAttribute('height', config.height);
+    s.setAttribute('viewBox', `${0} -${config.height / 2} ${config.width} ${config.height}`);
+    return s;
+  }
+
+  svgCircle(item) {
+    const c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    c.setAttribute('cx', item.x);
+    c.setAttribute('cy', item.y);
+    c.setAttribute('r', item.size);
+    c.setAttribute('stroke', 'blue');
+    c.setAttribute('stroke-opacity', '1');
+    return c;
   }
 }
