@@ -23,7 +23,12 @@ export class Wave {
       const s1 = Math.sin((t / this.d1) + this.offset);
       const s2 = Math.sin((t / this.d2) + this.offset);
 
-      this.data.push(new RenderItem(t, s1 * s2 * this.a));
+      // this.data.push(new RenderItem(t, s1 * s2 * this.a));
+      this.data.push(new RenderItem({
+        x: t,
+        y: s1 * s2 * this.a,
+        size: 2
+      }));
       t += this.o;
     }
     return this.data;

@@ -3,14 +3,11 @@
  */
 
 export class RenderItem {
-  constructor(x, y, size) {
-    this.x = x || 0;
-    this.y = y || 0;
-    this.size = size || 4;
+  constructor(params) {
+    this.x = params.x || 0;
+    this.y = params.y || 0;
+    this.size = params.size || 4;
+    this.fill = 'white';
+    this.stroke = 'black'
   }
 }
-
-export const sdata = {
-  config: {},
-  items: []
-};

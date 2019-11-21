@@ -21,7 +21,12 @@ export class MSize {
       let d =  ey / h;
       if (this.reverse) d = 1 - d;
       const s = d * this.value;
-      return new RenderItem(e.x, e.y, s);
+      // return new RenderItem(e.x, e.y, s);
+      return new RenderItem({
+        x: e.x,
+        y: e.y,
+        size: s
+      });
     });
   }
 

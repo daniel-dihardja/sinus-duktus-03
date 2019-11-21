@@ -32,7 +32,7 @@ export class SVGRenderer {
       const  c = this.svgCircle(i);
       s.appendChild(c);
     });
-    // document.body.appendChild(s);
+    document.body.appendChild(s);
   }
 
   svgDoc(config) {
@@ -48,8 +48,9 @@ export class SVGRenderer {
     c.setAttribute('cx', item.x);
     c.setAttribute('cy', item.y);
     c.setAttribute('r', item.size);
-    c.setAttribute('stroke', 'blue');
-    c.setAttribute('stroke-opacity', '1');
+    c.setAttribute('stroke', item.stroke);
+    // c.setAttribute('stroke-opacity', .5);
+    c.setAttribute('fill', item.fill);
     return c;
   }
 }
