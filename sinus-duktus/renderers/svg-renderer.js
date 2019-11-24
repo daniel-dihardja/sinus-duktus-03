@@ -32,8 +32,18 @@ export class SVGRenderer {
       const  c = this.svgCircle(i);
       s.appendChild(c);
     });
-    document.body.appendChild(s);
+
+    
+    const svgAsXML = (new XMLSerializer).serializeToString(s);
+    const dataURL = "data:image/svg+xml," + encodeURIComponent(svgAsXML);
+
+    const dl = document.createElement("a");
+    document.body.appendChild(dl); // This line makes it work in Firefox.
+    dl.setAttribute("href", dataURL);
+    dl.setAttribute("download", "test.svg");
+    dl.click();
   }
+
 
   svgDoc(config) {
     const s = document.createElementNS("http://www.w3.org/2000/svg", "svg");
