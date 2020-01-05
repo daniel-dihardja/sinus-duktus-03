@@ -33,14 +33,13 @@ export class SVGRenderer {
       s.appendChild(c);
     });
 
-    
     const svgAsXML = (new XMLSerializer).serializeToString(s);
     const dataURL = "data:image/svg+xml," + encodeURIComponent(svgAsXML);
 
     const dl = document.createElement("a");
-    document.body.appendChild(dl); // This line makes it work in Firefox.
     dl.setAttribute("href", dataURL);
-    dl.setAttribute("download", "test.svg");
+    const name = 'sd-' + Math.random() * 99999 + '.svg';
+    dl.setAttribute("download", name);
     dl.click();
   }
 
